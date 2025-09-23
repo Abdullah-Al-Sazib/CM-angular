@@ -1,12 +1,12 @@
 {
   "name": "my-angular-app",
   "version": "0.0.0",
- "scripts": {
-  "start": "ng serve",
-  "build": "ng build --configuration production",
-  "dev": "ng build --configuration development",
-  "test": "ng test"
-},
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build",
+    "dev": "ng build",
+    "test": "ng test"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.0",
