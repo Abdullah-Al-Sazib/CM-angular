@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Customer } from '../../../type';
 import { CustomerService } from '../../services/customer.service';
 
@@ -37,6 +37,12 @@ export class CustomerComponent implements OnInit {
   loadCustomers() {
     this.loading = true;
 
+    this.customers$ = this.customerService.getCustomers().pipe(
+      map((customers: any[]) => {
+        this.totalAmount = customers.reduce((sum, c) => sum + Number(c.amount || 0), 0);
+        return [...customers].sort((a, b) => a.id - b.id);
+      })
+    );
     this.customerService.getCustomers().subscribe({
       next: (data) => {
         this.customer$ = data.sort((a, b) => a.id - b.id);
