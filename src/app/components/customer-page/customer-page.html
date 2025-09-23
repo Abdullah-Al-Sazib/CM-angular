@@ -31,7 +31,7 @@
             </div>
             } @for (c of customer$; track $index) {
             <tr>
-              <td>{{ c.id }}</td>
+              <td>{{ $index + 1 }}</td>
               <td>{{ c.name }}</td>
               <td>{{ c.email }}</td>
               <td>{{ c.phone_number }}</td>
