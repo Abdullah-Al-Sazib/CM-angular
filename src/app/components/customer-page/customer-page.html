@@ -4,13 +4,18 @@
     <h4 class="text-center mb-4">CUSTOMER MANAGEMENT SYSTEM</h4>
     <div class="card-body">
       <!-- Action Buttons -->
+      @if (!loading) {
       <div class="d-flex flex-wrap justify-content-end gap-2 mb-3 mt-3">
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
           Add Customer
         </button>
         <button class="btn btn-dark" (click)="exportAllCustomersPDF()">Table PDF Download</button>
       </div>
-
+      } @if(loading) {
+      <div class="flex items-center justify-center h-screen center_loading">
+        <h5 class="text-2xl font-semibold text-gray-700">Loading Customers...</h5>
+      </div>
+      }@else {
       <div class="table-responsive">
         <table class="table table-bordered table-hover align-middle text-center">
           <thead class="table-dark">
@@ -25,11 +30,7 @@
             </tr>
           </thead>
           <tbody>
-            @if(loading) {
-            <div class="flex items-center justify-center h-screen">
-              <h5 class="text-2xl font-semibold text-gray-700">Loading Customers...</h5>
-            </div>
-            } @for (c of customer$; track $index) {
+            @for (c of customer$; track $index) {
             <tr>
               <td>{{ $index + 1 }}</td>
               <td>{{ c.name }}</td>
@@ -72,8 +73,10 @@
         </table>
       </div>
 
+      }
+
       <div class="d-flex justify-content-center mt-3">
-        <h6 class="fw-bold">TOTAL AMOUNT : {{ totalAmount }} Tk</h6>
+        <h6 class="fw-bold">TOTAL AMOUNT : {{ !loading ? totalAmount : 'loading...' }} Tk</h6>
       </div>
     </div>
   </div>

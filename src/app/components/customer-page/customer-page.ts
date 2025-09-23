@@ -9,6 +9,7 @@ import { CustomerService } from '../../services/customer.service';
 @Component({
   selector: 'app-customer-page',
   templateUrl: './customer-page.html',
+  styleUrl: './customer-page.css',
   imports: [FormsModule],
 })
 export class CustomerComponent implements OnInit {
