@@ -6,7 +6,7 @@
   "build": "ng build --configuration production",
   "dev": "ng build --configuration development",
   "test": "ng test"
-}
+},
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.0",
